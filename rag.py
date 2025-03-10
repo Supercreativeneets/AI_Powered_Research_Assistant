@@ -35,5 +35,6 @@ class Rag:
     def retriever(self,vector):
         return vector.as_retriever(search_type="similarity", search_kwargs={"k": 3})
     
+    # ✅ Create Rag-chain
     def rag_chain(self,retriever,que_ans_chain):
         return create_retrieval_chain(retriever,que_ans_chain)

@@ -40,11 +40,9 @@ query = st.text_input("Enter a research topic:")
 if st.button("Search"):
     with st.spinner("Fetching research papers..."):  # Show a loading spinner
         
-        # Fetch research papers from ArXiv and Google Scholar
-        arxiv_papers = data_loader.fetch_arxiv_papers(query)
-        #google_scholar_papers = data_loader.fetch_google_scholar_papers(query)
-        all_papers = arxiv_papers #+ google_scholar_papers  # Combine results from both sources
-        
+        # Fetch research papers from ArXiv
+        all_papers = data_loader.fetch_arxiv_papers(query)
+                
 
         # If no papers are found, display an error message
         if not all_papers:

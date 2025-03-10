@@ -1,6 +1,5 @@
 import requests
 import xml.etree.ElementTree as ET
-from scholarly import scholarly
 from arxiv2text import arxiv_to_text
 
 from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -21,6 +20,7 @@ class DataLoader:
             return [
                 {
                     "title": entry.find("{http://www.w3.org/2005/Atom}title").text,
+                    "date": entry.find("{http://www.w3.org/2005/Atom}updated"),
                     "summary": entry.find("{http://www.w3.org/2005/Atom}summary").text,
                     "link": entry.find("{http://www.w3.org/2005/Atom}id").text,
                     "pdf_url": entry.find("{http://www.w3.org/2005/Atom}id").text.replace("abs", "pdf") + ".pdf"
@@ -62,26 +62,7 @@ class DataLoader:
         
         return papers
 
-    def fetch_google_scholar_papers(self, query):
-        """
-            Fetches top 5 research papers from Google Scholar.
-            Returns:
-                list: A list of dictionaries containing paper details (title, summary, link)
-        """
-        papers = []
-        search_results = scholarly.search_pubs(query)
-
-        for i, paper in enumerate(search_results):
-            if i >= 5:
-                break
-            papers.append({
-                "title": paper["bib"]["title"],
-                "summary": paper["bib"].get("abstract", "No summary available"),
-                "link": paper.get("pub_url", "No link available")
-            })
-        return papers
- 
-    
+        
 class Embed_content:
     def __init__(self):
         print("Embed content init")
