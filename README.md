@@ -26,7 +26,7 @@ This cutting edge AI-driven tool fetches the relevant research papers from ArXiv
 ## Benefits:
 
 * **Efficiency:** Reduces the time spent to read through similar articles on the topic and get key insights. Extracts from the articles, such as summaries, methods and conclusion helps with analysis and comparison.
-* **Accuracy:** By integrating RAG, the accuracy of answer is inproved, reducing the likelihood of misinformation.
+* **Accuracy:** By integrating RAG, the accuracy of answer is improved, reducing the likelihood of misinformation.
 
 ## Future Enhancements:
 
